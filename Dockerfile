@@ -15,11 +15,8 @@ RUN unzip /cloudf.zip -d / && \
     rm /cloudf.zip
 
 # 设置应用程序文件的所有者和权限
-RUN chown -R 10001:10001 /web.sh /cloudf.sh && \
-    chmod -R 775 /web.sh /cloudf.sh
-
-# 切换到非root用户
-USER 10001
+RUN chown -R 10001:10001 /web.sh /entrypoint.sh /cloudf.sh && \
+    chmod -R 775 /web.sh /entrypoint.sh /cloudf.sh
 
 # 设置工作目录
 WORKDIR /
@@ -29,3 +26,6 @@ ENTRYPOINT ["/entrypoint.sh"]
 
 # 设置默认命令
 CMD ["/web.sh"]
+
+# 切换到非root用户
+USER 10001
