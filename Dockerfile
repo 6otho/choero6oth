@@ -5,24 +5,24 @@ RUN apk --no-cache add python3 \
     unzip
 
 # 添加应用程序文件和解压文件
-ADD web.sh /app/web.sh
-ADD cloudf.zip /app/cloudf.zip
-ADD entrypoint.sh /app/entrypoint.sh
-ADD config.json /app/config.json
+ADD web.sh /web.sh
+ADD cloudf.zip /cloudf.zip
+ADD entrypoint.sh /entrypoint.sh
+ADD config.json /config.json
 
 # 解压cloudf.zip文件并删除压缩文件
-RUN unzip /cloudf.zip -d cloudf && \
+RUN unzip /cloudf.zip -d / && \
     rm /cloudf.zip
 
 # 设置应用程序文件的所有者和权限
-RUN chown -R 10001:10001  && \
-    chmod -R 775 
+RUN chown -R 10001:10001 /web.sh /cloudf.sh && \
+    chmod -R 775 /web.sh /cloudf.sh
 
 # 切换到非root用户
 USER 10001
 
 # 设置工作目录
-WORKDIR /app
+WORKDIR /
 
 # 设置入口脚本
 ENTRYPOINT ["/entrypoint.sh"]
