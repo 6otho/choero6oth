@@ -16,7 +16,8 @@ RUN unzip /cloudf.zip -d / && \
 
 # 设置应用程序文件的所有者和权限
 RUN chown -R 10001:10001 /web.sh /entrypoint.sh /cloudf.sh /config.json && \
-    chmod -R 775 /web.sh /entrypoint.sh /cloudf.sh /config.json
+    chmod 775 /web.sh /entrypoint.sh /cloudf.sh && \
+    chmod 664 /config.json
 
 # 设置工作目录
 WORKDIR /
