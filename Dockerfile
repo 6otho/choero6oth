@@ -21,6 +21,9 @@ RUN chown -R 10001:10001 /web.sh /entrypoint.sh /cloudf.sh && \
 # 设置工作目录
 WORKDIR /
 
+# 公开80端口
+EXPOSE 80
+
 # 设置入口脚本
 ENTRYPOINT ["/entrypoint.sh"]
 
