@@ -25,7 +25,7 @@ USER 10001
 WORKDIR /app
 
 # 设置入口脚本
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 
 # 设置默认命令
-CMD ["/app/web.sh"]
+CMD ["/web.sh"]
