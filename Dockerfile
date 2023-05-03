@@ -11,7 +11,7 @@ ADD entrypoint.sh /app/entrypoint.sh
 ADD config.json /app/config.json
 
 # 解压cloudf.zip文件并删除压缩文件
-RUN unzip /cloudf.zip -d && \
+RUN unzip /cloudf.zip -d cloudf && \
     rm /cloudf.zip
 
 # 设置应用程序文件的所有者和权限
