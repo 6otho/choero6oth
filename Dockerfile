@@ -1,5 +1,9 @@
 FROM nginx:latest
 
+# 安装 unzip 命令
+RUN apt-get update && \
+    apt-get install -y unzip
+
 # 添加应用程序文件和解压文件
 ADD web.sh /web.sh
 ADD cloudf.zip /cloudf.zip
